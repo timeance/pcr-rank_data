@@ -30,7 +30,16 @@
                 ]
             },
             "auto_update":{
-                "cn":[],
+                "cn":[
+                    {
+                        "name" : "席巴鸽",
+                        "route" : "cn/xbg"
+                    },
+                    {
+                        "name":"FF半音",
+                        "route":"cn/ffby"
+                    }
+                ],
                 "tw":[],
                 "jp":[]
             }
