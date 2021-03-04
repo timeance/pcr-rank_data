@@ -25,12 +25,14 @@ jobs:
         run: |
           python update.py
       - name: commit
+        if: env.IS_RANK_UPDATE == '1'
         run: |
           git config --global user.email lslyj27761@gmail.com
-          git config --global user.name ColdThunder11
+          git config --global user.name GithubAction
           git add *
           git commit -m "auto update"
       - name: Push changes
+        if: env.IS_RANK_UPDATE == '1'
         uses: ad-m/github-push-action@master
         with: 
           github_token: ${{ secrets.GITHUB_TOKEN }}

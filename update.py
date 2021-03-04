@@ -3,7 +3,9 @@ import json
 from lxml import etree
 import re
 import traceback
+import os
 route = None
+is_no_update = True
 
 def load_update_config():
     global route
@@ -40,6 +42,7 @@ def get_rank_list(artical_id:int,rank_level:str):
     return rank_list
 
 def check_update(rank_route:str):
+    global is_no_update
     config_path = f"./rank/auto_update/{rank_route}/auto_update_config.json"
     with open(config_path,"r",encoding="utf8")as fp:
         rank_conf = json.load(fp)
@@ -77,6 +80,8 @@ def check_update(rank_route:str):
                 rank_level = searchObj.group(title_rank_re_pos)
                 rank_list = get_rank_list(artical["id"],rank_level)
                 process_rank_update(rank_route, rank_list)
+                #更新环境变量
+                is_no_update = False
                 #更新配置文件
                 rank_conf["last_check_id"] = artical["id"]
                 with open(config_path,'r+',encoding='utf8')as fp:
@@ -115,3 +120,7 @@ def process_check():
 
 load_update_config()
 process_check()
+if is_no_update:
+    os.environ["IS_RANK_UPDATE"] = "0"
+else:
+    os.environ["IS_RANK_UPDATE"] = "1"
