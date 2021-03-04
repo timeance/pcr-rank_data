@@ -94,6 +94,8 @@ def check_update(rank_route:str):
                 rank_file_list = []
                 for rank_name in rank_list.keys():
                     rank_file_list.append(f"{rank_name}.png")
+                rank_str = rank_file_list[0].replace("_1.png","")
+                rank_config["notice"] = rank_conf["notice_template"].replace("{$rank}",rank_str)
                 rank_config["files"] = rank_file_list
                 with open(rank_config_path,'r+',encoding='utf8')as fp:
                     fp.seek(0)
