@@ -123,6 +123,4 @@ def process_check():
 load_update_config()
 process_check()
 if is_no_update:
-    os.environ["IS_RANK_UPDATE"] = "0"
-else:
-    os.environ["IS_RANK_UPDATE"] = "1"
+    exit(1)
