@@ -3,12 +3,12 @@ name: Auto-Update
 on: push
 
 jobs:
-  build:
+  auto-update:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
-    update-rank:
+    steps:
       - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
