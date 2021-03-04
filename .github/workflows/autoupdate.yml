@@ -1,6 +1,8 @@
 name: Auto-Update
 
-on: push
+on:
+  schedule:
+    - cron:  '*/30 * * * *'
 
 jobs:
   auto-update:
