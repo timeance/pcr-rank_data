@@ -27,9 +27,8 @@ jobs:
           git config --global user.name ColdThunder11
           git add *
           git commit -m "auto update"
-      
       - name: Push changes
         uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
