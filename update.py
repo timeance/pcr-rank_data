@@ -122,5 +122,6 @@ def process_check():
 
 load_update_config()
 process_check()
+exit(1)
 if is_no_update:
     exit(1)
