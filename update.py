@@ -88,7 +88,7 @@ def check_update(rank_route:str):
                     rank_config = json.load(fp)
                 rank_file_list = []
                 for rank_name in rank_list.keys():
-                    rank_file_list.append(rank_name)
+                    rank_file_list.append(f"{rank_name}.png")
                 rank_config["files"] = rank_file_list
                 with open(rank_config_path,'r+',encoding='utf8')as fp:
                     fp.seek(0)
